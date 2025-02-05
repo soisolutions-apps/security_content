@@ -7,6 +7,7 @@ status: production
 type: TTP
 data_source:
 - AWS CloudWatchLogs VPCflow
+- NetScout Base
 description: This analytic identifies instances where an internal host has attempted
   to communicate with 250 or more destination IP addresses using the same port and
   protocol. Horizontal port scans from internal hosts can indicate reconnaissance

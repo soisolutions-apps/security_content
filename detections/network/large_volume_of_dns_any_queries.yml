@@ -13,7 +13,8 @@ description: The following analytic identifies a large volume of DNS ANY queries
   this activity could disrupt services, degrade network performance, and potentially
   be part of a larger Distributed Denial of Service (DDoS) attack, impacting the availability
   of critical infrastructure.
-data_source: []
+data_source:
+- NetScout DNS
 search: '| tstats `security_content_summariesonly` count from datamodel=Network_Resolution
   where nodename=DNS "DNS.message_type"="QUERY" "DNS.record_type"="ANY" by "DNS.dest"
   | `drop_dm_object_name("DNS")` | where count>200 | `large_volume_of_dns_any_queries_filter`'

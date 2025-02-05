@@ -15,6 +15,7 @@ description: The following analytic identifies DNS queries with unusually large 
   the network.
 data_source:
 - Sysmon EventID 22
+- NetScout DNS
 search: '| tstats `security_content_summariesonly` count from datamodel=Network_Resolution
   where NOT DNS.record_type IN("Pointer","PTR") by DNS.query host| `drop_dm_object_name("DNS")`
   | eval tlds=split(query,".") | eval tld=mvindex(tlds,-1) | eval tld_len=len(tld)

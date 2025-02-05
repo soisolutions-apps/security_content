@@ -5,7 +5,8 @@ date: '2024-11-15'
 status: experimental
 author: Abhinav Mishra, Kumar Sharad and Namratha Sreekanta, Splunk
 type: Anomaly
-data_source: []
+data_source:
+- NetScout Base
 description: The following analytic identifies potential DNS data exfiltration using
   a pre-trained deep learning model. It leverages DNS request data from the Network
   Resolution datamodel and computes features from past events between the same source

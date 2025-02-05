@@ -15,6 +15,7 @@ description: The following analytic detects DNS queries to common Ngrok domains,
   security.
 data_source:
 - Sysmon EventID 22
+- NetScout DNS
 search: '| tstats `security_content_summariesonly` count min(_time) as firstTime max(_time)
   as lastTime  from datamodel=Network_Resolution where DNS.query IN ("*.ngrok.com","*.ngrok.io",
   "ngrok.*.tunnel.com", "korgn.*.lennut.com") by DNS.src DNS.query DNS.answer |  `drop_dm_object_name("DNS")`

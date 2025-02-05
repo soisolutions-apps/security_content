@@ -16,6 +16,7 @@ description: The following analytic detects attempts to exploit CVE-2022-26134, 
   crucial to prevent extensive damage.
 data_source:
 - Palo Alto Network Threat
+- NetScout HTTP
 search: '| tstats count min(_time) as firstTime max(_time) as lastTime from datamodel=Web
   where Web.url IN ("*${*", "*%2F%7B*") (Web.url="*org.apache.commons.io.IOUtils*"
   Web.url="*java.lang.Runtime@getRuntime().exec*") OR (Web.url="*java.lang.Runtime%40getRuntime%28%29.exec*")

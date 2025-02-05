@@ -13,7 +13,8 @@ description: The following analytic identifies Domain Generation Algorithm (DGA)
   malicious traffic. If confirmed malicious, this activity could enable attackers
   to maintain persistent communication with compromised systems, evade detection,
   and execute further malicious actions.
-data_source: []
+data_source:
+- NetScout Base
 search: '| tstats `security_content_summariesonly` values(DNS.answer) as IPs min(_time)
   as firstTime  max(_time) as lastTime from datamodel=Network_Resolution by DNS.src,
   DNS.query | `drop_dm_object_name(DNS)` | rename query AS domain | fields IPs, src,

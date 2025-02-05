@@ -14,6 +14,7 @@ description: The following analytic identifies outbound LDAP traffic to external
   network compromise.
 data_source:
 - Bro
+- NetScout Base
 search: '| tstats `security_content_summariesonly` count min(_time) as firstTime max(_time)
   as lastTime values(All_Traffic.dest_ip) as dest_ip from datamodel=Network_Traffic.All_Traffic
   where All_Traffic.dest_port = 389 OR All_Traffic.dest_port = 636 AND NOT (All_Traffic.dest_ip

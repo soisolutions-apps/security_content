@@ -15,6 +15,7 @@ description: The following analytic detects network traffic associated with know
   security.
 data_source:
 - Palo Alto Network Traffic
+- NetScout Base
 search: '| tstats `security_content_summariesonly` count min(_time) as firstTime max(_time)
   as lastTime values(All_Traffic.dest_port) as dest_port latest(user) as user from
   datamodel=Network_Traffic by All_Traffic.src All_Traffic.dest, All_Traffic.app |

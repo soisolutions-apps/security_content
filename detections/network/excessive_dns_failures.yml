@@ -13,7 +13,8 @@ description: The following analytic identifies excessive DNS query failures by c
   attempts, or malware communication issues. If confirmed malicious, this activity
   could lead to disrupted network services, hindered communication, or data exfiltration
   attempts by attackers.
-data_source: []
+data_source:
+- NetScout DNS
 search: '| tstats `security_content_summariesonly` count from datamodel=Network_Resolution
   where nodename=DNS "DNS.reply_code"!="No Error" "DNS.reply_code"!="NoError" DNS.reply_code!="unknown"
   NOT "DNS.query"="*.arpa" "DNS.query"="*.*" by "DNS.src" "DNS.query" "DNS.reply_code"

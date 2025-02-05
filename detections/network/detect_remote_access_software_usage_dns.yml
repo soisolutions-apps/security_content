@@ -14,6 +14,7 @@ description: The following analytic detects DNS queries to domains associated wi
   not mitigated promptly.
 data_source:
 - Sysmon EventID 22
+- NetScout DNS
 search: '| tstats `security_content_summariesonly` count min(_time) as firstTime max(_time)
   as lastTime values(DNS.answer) as answer from datamodel=Network_Resolution by DNS.src
   DNS.query | `drop_dm_object_name("DNS")` | `security_content_ctime(firstTime)` |

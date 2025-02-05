@@ -15,6 +15,7 @@ description: The following analytic detects server-side template injection attem
   within the network.
 data_source:
 - Palo Alto Network Threat
+- NetScout HTTP
 search: '| tstats count from datamodel=Web where Web.http_method IN ("GET") Web.url="*/catalog-portal/ui/oauth/verify?error=&deviceudid=*"
   AND Web.url="*freemarker.template.utility.Execute*" by Web.http_user_agent Web.http_method,
   Web.url,Web.url_length Web.src, Web.dest sourcetype | `drop_dm_object_name("Web")`

@@ -15,6 +15,7 @@ description: The following analytic identifies potential server-side template in
   security risk.
 data_source:
 - Palo Alto Network Threat
+- NetScout HTTP
 search: '| tstats count from datamodel=Web where Web.http_method IN ("GET") Web.url="*deviceudid=*"
   AND Web.url IN ("*java.lang.ProcessBuilder*","*freemarker.template.utility.ObjectConstructor*")
   by Web.http_user_agent Web.http_method, Web.url,Web.url_length Web.src, Web.dest

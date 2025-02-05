@@ -14,6 +14,7 @@ description: The following analytic detects the execution of known remote access
   compromise the network, posing a severe security risk.
 data_source:
 - Palo Alto Network Threat
+- NetScout HTTP
 search: '| tstats count min(_time) as firstTime max(_time) as lastTime latest(Web.http_method)
   as http_method latest(Web.http_user_agent) as http_user_agent latest(Web.url) as
   url latest(Web.user) as user latest(Web.dest) as dest from datamodel=Web by Web.action
